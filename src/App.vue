@@ -1,9 +1,17 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <header>
+      <div id="nav">
+        <div class="header-left">
+          <img id="header-icon" src="./assets/icon.png">
+        </div>
+        <div class="header-right">
+          <router-link to="/">ホーム</router-link> |
+          <router-link to="/StampStore">スタンプ</router-link> | 
+          <router-link to="/PointStore">ポイント</router-link>
+        </div>
+      </div>
+    </header>
     <router-view />
   </div>
 </template>
@@ -17,16 +25,39 @@
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
+header {
+  height: 65px;
+  width: 100%;
+  background-color: black;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
+#header-icon {
+  width: 150px;
+  margin-top: 15px;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+#nav {
+  width: 1170px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+.header-left {
+  float: left;
+}
+.header-right {
+  float: right;
+}
+
+.header-right a{
+  line-height: 65px;
+  padding: 0 25px;
+  color: white;
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: orange;
 }
+
 </style>

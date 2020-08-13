@@ -1,18 +1,43 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <div class="search-box">
+      <form action="">
+        <input type="url" class="search" placeholder="URL検索">
+        <button type="submit" class="submit-button">
+          <font-awesome-icon icon="search" class="search-icon"/>
+        </button>
+      </form>
+    </div>
+
+    <div class="youtube-box">
+      <div class="video-box">
+        <div class="video">
+
+        </div>
+        <h1>タイトル</h1>
+      </div>
+
+      <div id="coment" class="coment-box">
+        <div class="coment">
+          <Coment />
+        </div>
+        <div class="stamp-box">
+          <button class="stamp">スタンプ購入</button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+//import StampButton from "@/components/StampButton.vue";
+import Coment from "../components/coment.vue";
 
 export default {
   name: "Home",
   components: {
-    HelloWorld
+    Coment
   }
 };
 </script>
