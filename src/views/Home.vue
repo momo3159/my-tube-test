@@ -40,7 +40,7 @@ export default {
 </script>
 
 <style scoped>
-  body{
+  .home{
     background-color: #000;
   }
   .search-box{
