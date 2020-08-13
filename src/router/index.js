@@ -24,6 +24,12 @@ const routes = [
     name: "PointStore",
     component: () => 
       import("../views/PointStore.vue")
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: () => 
+      import("../views/Login.vue")
   }
 ];
 
