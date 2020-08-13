@@ -42,6 +42,8 @@ export default {
 <style scoped>
   .home{
     background-color: #000;
+      height: 100vh;
+      width: 100vw;
   }
   .search-box{
     padding-top: 50px;
