@@ -1,6 +1,6 @@
 module.exports = {
     publicPath: process.env.NODE_ENV === 'production'
-      ? '/MyTubeTest/' : '/',
+      ? '/my-tube-test/' : '/',
     assetsDir: "./",
     outputDir: "docs",
   };
