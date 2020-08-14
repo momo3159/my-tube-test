@@ -103,36 +103,15 @@ export default {
     }
   },
   methods: {
-    buy: (stamp, id) => {
+    buy: function(stamp) {
       // デバッグ用
-      console.log(`${stamp.author}の${stamp.title}を購入しました`);
-      console.log(`${stamp.point}ポイントを使いました`);
-      console.log(id);
-      // fetch(
-      //   "https://91ss8vtva7.execute-api.ap-northeast-1.amazonaws.com/mytubeapi?id=" +
-      //     id
-      // )
-      //   .then(response => {
-      //     console.log(response.status);
-      //     if (!response.ok) {
-      //       console.log("error response");
-      //     } else {
-      //       return response.json().then(userInfo => {
-      //         console.log(userInfo);
-      //         if (Number.parseInt(userInfo.point) < stamp.point) {
-      //           window.alert("ポイントが足りません");
-      //         } else {
-      //           let point = Number.parseInt(userInfo.point);
-      //           let rem = point - stamp.point;
-      //           userInfo.point = rem.toString();
-      //           // TODO: サーバーにポイント情報を送る
-      //         }
-      //       });
-      //     }
-      //   })
-      //   .catch(error => {
-      //     console.log(error);
-      //   });
+      if(this.$store.state.point < stamp.point){
+        window.alert("ポイントが足りません");
+      } else {
+        window.alert(`${stamp.author}の${stamp.title}を購入しました`);
+        window.alert(`${stamp.point}ポイントを使いました`);
+        this.$store.state.point -= stamp.point;
+      } 
     }
   }
 };

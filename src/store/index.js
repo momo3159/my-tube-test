@@ -13,9 +13,9 @@ export default new Vuex.Store({
     login(state){
       state.isLogin = true;
     },
-    setId(state, point){
+    setPt(state, point){
       state.point = point;
-    }
+    },
   },
   getters: {
     getId(state){
