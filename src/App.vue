@@ -38,7 +38,7 @@
       showPt(){
         return `所持ポイント: ${this.getPt()}Pt`;
       }
-  }
+    }
   }
 </script>
 

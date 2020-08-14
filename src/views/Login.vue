@@ -1,31 +1,31 @@
 <template>
   <div class="login">
-    <h1 class="login-title">ログイン</h1>
     <div class="login-box">
-      <form action="">
-        <input
-          type="text"
-          placeholder="IDを入力してください"
-          class="input"
-          v-model="inputID"
-        />
-        <br />
-        <input
-          type="password"
-          placeholder="パスワードを入力してください"
-          class="input"
-          v-model="inputPW"
-        />
-        <br />
-        <input
-          type="button"
-          value="ログインする"
-          class="login-button"
-          v-on:click.prevent="doLogin(inputID, inputPW)"
-        />
-      </form>
+        <h1 class="login-title">ログイン</h1>
+        <form action="">
+            <input
+                type="text"
+                placeholder="IDを入力してください"
+                class="input"
+                v-model="inputID"
+            />
+            <br />
+            <input
+                type="password"
+                placeholder="パスワードを入力してください"
+                class="input"
+                v-model="inputPW"
+            />
+            <br />
+            <input
+                type="button"
+                value="ログインする"
+                class="login-button"
+                v-on:click.prevent="doLogin(inputID, inputPW)"
+            />
+        </form>
+      </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -46,11 +46,16 @@ export default {
             console.error("エラーレスポンス");
           } else {
             return response.json().then(userInfo => {
+              console.log(userInfo);
               console.log(userInfo["message"]);
-              if (userInfo["message"] !== "id or password is incorrect") {
+              if (userInfo["message"] === "id or password is incorrect") {
                 window.alert("ユーザーIDかパスワードが間違っています");
                 console.log(this.$store.state.isLogin);
-              } else {
+              } else if(userInfo["id"] != this.inputID){
+                  console.log(userInfo["id"])
+                  window.alert("ユーザーIDかパスワードが間違っています");
+              }
+              else {    
                 this.login();
                 this.$store.state.id = inputID;
                 window.alert("ログインしました");
@@ -65,7 +70,7 @@ export default {
     },
     login() {
         this.$store.commit('login');
-    }
+    },
   }
 };
 </script>
