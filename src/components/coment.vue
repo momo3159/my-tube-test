@@ -7,17 +7,17 @@
 
 <script>
 export default {
-  data (){
+  data() {
     return {
       name: "名無し",
       coment: "Hello World"
-    }
+    };
   }
-}
+};
 </script>
 
 <style>
-body{
+body {
   color: #fff;
 }
 </style>

@@ -1,36 +1,87 @@
 <template>
- <div class="login">
-  <h1 class="login-title">ログイン</h1>
-  <div class="login-box">
-    <form action="">
-      <input type="text" placeholder="IDを入力してください" class="input">
-      <br>
-      <input type="password" placeholder="パスワードを入力してください" class="input">
-      <br>
-      <input type="submit" value="ログインする" class="login-button">
-    </form>
+  <div class="login">
+    <h1 class="login-title">ログイン</h1>
+    <div class="login-box">
+      <form action="">
+        <input
+          type="text"
+          placeholder="IDを入力してください"
+          class="input"
+          v-model="inputID"
+        />
+        <br />
+        <input
+          type="password"
+          placeholder="パスワードを入力してください"
+          class="input"
+          v-model="inputPW"
+        />
+        <br />
+        <input
+          type="button"
+          value="ログインする"
+          class="login-button"
+          v-on:click.prevent="doLogin(inputID, inputPW)"
+        />
+      </form>
+    </div>
   </div>
- </div>
 </template>
 
 <script>
-
 export default {
-}
-
+  data: () => {
+    return {
+      inputID: "",
+      inputPW: ""
+    };
+  },
+  methods: {
+    doLogin: function(inputID, inputPW) { // inputID, inputPW: String
+      fetch(
+        `https://91ss8vtva7.execute-api.ap-northeast-1.amazonaws.com/mytubeapi/mytube/get?id=${inputID}&pass=${inputPW}`
+      )
+        .then(response => {
+          // エラーレスポンスが返されたことを検知する
+          if (!response.ok) {
+            console.error("エラーレスポンス");
+          } else {
+            return response.json().then(userInfo => {
+              console.log(userInfo["message"]);
+              if (userInfo["message"] !== "id or password is incorrect") {
+                window.alert("ユーザーIDかパスワードが間違っています");
+                console.log(this.$store.state.isLogin);
+              } else {
+                this.login();
+                this.$store.state.id = inputID;
+                window.alert("ログインしました");
+              }
+            });
+          }
+        })
+        .catch(() => {
+          window.alert("IDかパスワードが間違っています");
+          // console.error(error);
+        });
+    },
+    login() {
+        this.$store.commit('login');
+    }
+  }
+};
 </script>
 
 <style scoped>
-.main{
+.main {
   border-top: 2px solid #fff;
   color: #fff;
   text-align: center;
   height: 100vh;
 }
-.login-title{
+.login-title {
   padding-top: 70px;
 }
-.input{
+.input {
   width: 30em;
   padding: 10px;
   margin-top: 50px;
@@ -40,10 +91,10 @@ export default {
   color: #fff;
   outline: none;
 }
-.input:focus{
+.input:focus {
   outline: none;
 }
-.login-button{
+.login-button {
   margin-top: 50px;
   display: inline-block;
   padding: 0.5em 1em;
@@ -53,12 +104,12 @@ export default {
   border-bottom: solid 4px #627295;
   border-radius: 3px;
 }
-.login-button:active{
+.login-button:active {
   -webkit-transform: translateY(4px);
   transform: translateY(4px);
   border-bottom: none;
 }
-.login-button:focus{
+.login-button:focus {
   outline: none;
 }
 </style>

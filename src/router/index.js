@@ -22,14 +22,12 @@ const routes = [
   {
     path: "/pointstore",
     name: "PointStore",
-    component: () => 
-      import("../views/PointStore.vue")
+    component: () => import("../views/PointStore.vue")
   },
   {
     path: "/login",
     name: "Login",
-    component: () => 
-      import("../views/Login.vue")
+    component: () => import("../views/Login.vue")
   }
 ];
 

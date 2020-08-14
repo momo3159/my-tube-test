@@ -3,19 +3,34 @@
     <header>
       <div id="nav">
         <div class="header-left">
-          <img id="header-icon" src="./assets/icon.png">
+          <img id="header-icon" src="./assets/icon.png" />
         </div>
         <div class="header-right">
           <router-link to="/">ホーム</router-link> |
-          <router-link to="/StampStore">スタンプ</router-link> | 
-          <router-link to="/PointStore">ポイント</router-link> | 
+          <router-link to="/StampStore">スタンプ</router-link> |
+          <router-link to="/PointStore">ポイント</router-link> |
           <router-link to="/Login">ログイン</router-link>
+          <div id="userId" v-show="isLogin">userID: {{getId()}}でログイン中</div>
         </div>
+        
       </div>
     </header>
     <router-view />
   </div>
 </template>
+
+<script>
+  export default{
+    methods: {
+      isLogin(){
+        return this.$store.getters.isLogin;
+      },
+      getId(){
+        return this.$store.getters.getId;
+      }
+  }
+  }
+</script>
 
 <style>
 #app {
@@ -53,7 +68,7 @@ header {
   float: right;
 }
 
-.header-right a{
+.header-right a {
   line-height: 65px;
   padding: 0 25px;
   color: white;
@@ -63,4 +78,11 @@ header {
   color: orange;
 }
 
+#userId {
+  float: right;
+  line-height: 65px;
+  padding: 0 25px;
+  color: white;
+  margin-right: 0px;
+}
 </style>
