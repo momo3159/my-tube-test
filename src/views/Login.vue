@@ -39,7 +39,8 @@ export default {
   methods: {
     doLogin: function(inputID, inputPW) { // inputID, inputPW: String
       fetch(
-        `https://91ss8vtva7.execute-api.ap-northeast-1.amazonaws.com/mytubeapi/mytube/get?id=${inputID}&pass=${inputPW}`
+          `https://91ss8vtva7.execute-api.ap-northeast-1.amazonaws.com/mytubeapi/mytube/get?id=${inputID}&pass=${inputPW}`
+        //`https://91ss8vtva7.execute-api.ap-northeast-1.amazonaws.com/mytubeapi/mytube/get?id=${inputID}&pass=${inputPW}`
       )
         .then(response => {
           if (!response.ok) {
