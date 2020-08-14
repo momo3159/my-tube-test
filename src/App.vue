@@ -11,6 +11,7 @@
           <router-link to="/PointStore">ポイント</router-link> |
           <router-link to="/Login">ログイン</router-link>
           <div id="userId" v-show="isLogin()">{{showIdInHeader()}}</div>
+          <div id="userPt" v-show="isLogin()">{{showPt()}}</div>
         </div>
         
       </div>
@@ -28,8 +29,14 @@
       getId(){
         return this.$store.getters.getId;
       },
+      getPt(){
+        return this.$store.getters.getPt;
+      },
       showIdInHeader(){
         return `userID: ${this.getId()}でログイン中`;
+      },
+      showPt(){
+        return `所持ポイント: ${this.getPt()}Pt`;
       }
   }
   }
@@ -81,11 +88,12 @@ header {
   color: orange;
 }
 
-#userId {
+#userId, #userPt {
   float: right;
   line-height: 65px;
   padding: 0 25px;
   color: white;
   margin-right: 0px;
 }
+
 </style>

@@ -42,7 +42,6 @@ export default {
         `https://91ss8vtva7.execute-api.ap-northeast-1.amazonaws.com/mytubeapi/mytube/get?id=${inputID}&pass=${inputPW}`
       )
         .then(response => {
-          // エラーレスポンスが返されたことを検知する
           if (!response.ok) {
             console.error("エラーレスポンス");
           } else {

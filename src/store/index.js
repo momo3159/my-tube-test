@@ -6,11 +6,15 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     isLogin: false,
-    id: ""
+    id: "",
+    point: 0
   },
   mutations: {
     login(state){
       state.isLogin = true;
+    },
+    setId(state, point){
+      state.point = point;
     }
   },
   getters: {
@@ -19,6 +23,9 @@ export default new Vuex.Store({
     },
     isLogin(state){
       return state.isLogin;
+    },
+    getPt(state) {
+      return state.point;
     }
   },
   actions: {},
