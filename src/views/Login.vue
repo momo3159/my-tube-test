@@ -46,6 +46,8 @@ export default {
             console.error("エラーレスポンス");
           } else {
             return response.json().then(userInfo => {
+                console.log(inputID);
+                console.log(inputPW);
               console.log(userInfo);
               console.log(userInfo["message"]);
               if (userInfo["message"] === "id or password is incorrect") {
