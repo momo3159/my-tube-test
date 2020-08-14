@@ -10,8 +10,7 @@
           <router-link to="/StampStore">スタンプ</router-link> |
           <router-link to="/PointStore">ポイント</router-link> |
           <router-link to="/Login">ログイン</router-link>
-          <div id="userId" v-if="isLogin">userID: {{getId()}}でログイン中</div>
-          <div id="userId" v-else></div>
+          <div id="userId" v-show="isLogin()">{{showIdInHeader()}}</div>
         </div>
         
       </div>
@@ -28,6 +27,9 @@
       },
       getId(){
         return this.$store.getters.getId;
+      },
+      showIdInHeader(){
+        return `userID: ${this.getId()}でログイン中`;
       }
   }
   }

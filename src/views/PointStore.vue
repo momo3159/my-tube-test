@@ -5,7 +5,6 @@
       <div v-for="point in points" v-bind:key="point.price" class="item">
         <img v-bind:src="point.imgPath" />
         <PointChoice :point="point.price"></PointChoice>
-        <div v-show="isLogin">{{getId()}}</div>
       </div>
     </div>
     
